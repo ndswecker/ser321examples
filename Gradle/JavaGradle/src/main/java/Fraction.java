@@ -39,12 +39,18 @@ public class Fraction {
 
    public static void main (String args[]) {
 	   if (args.length == 2){
+		int argX = 0;
+		int argY = 0;
+		   
 		   try {
+			   
+			   argX = Integer.parseInt(args[0]);
+			   argY = Integer.parseInt(args[1]);
 			   
 			   Fraction frac = new Fraction();
 			   
-			   frac.setDenominator(args[0]);
-			   frac.setNumerator(args[1]);
+			   frac.setDenominator(argX);
+			   frac.setNumerator(argY);
 			   System.out.print("The fraction is: ");
 			   frac.print();
 			   System.out.println("");
