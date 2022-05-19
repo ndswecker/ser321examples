@@ -50,7 +50,7 @@ public class Fraction {
 			   System.out.println("");
 			   
 		   } catch (Exception e) {
-			   System.out.println("Arguments: " args[0] + ", " + args[1] + " must be integers.");
+			   System.out.println("Arguments: " + args[0] + ", " + args[1] + " must be integers.");
 			   System.exit(1);
 		   }
 	   } else {
