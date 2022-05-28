@@ -194,75 +194,73 @@ class WebServer {
             builder.append("File not found: " + file);
           }
         } else if (request.contains("multiply?")) {
-          // This multiplies two numbers, there is NO error handling, so when
-          // wrong data is given this just crashes
+			  // This multiplies two numbers, there is NO error handling, so when
+			  // wrong data is given this just crashes
 
-          Map<String, String> query_pairs = new LinkedHashMap<String, String>();
-		  
-		  try {
-		  // extract path parameters
-          query_pairs = splitQuery(request.replace("multiply?", ""));
-		  Integer qSize = query_pairs.size();
-		  
-		  Integer num1;
-		  Integer num2;
-		  Integer result;
+			  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
 			  
-			  if (qSize >= 2){
-				  // 2 queries
-				  if (isInt(query_pairs.get("num1")) && isInt(query_pairs.get("num2"))){
+			  try {
+			  // extract path parameters
+			  query_pairs = splitQuery(request.replace("multiply?", ""));
+			  Integer qSize = query_pairs.size();
+			  
+			  Integer num1;
+			  Integer num2;
+			  Integer result;
+				  // Ignore additional query parameters outside of 2
+				  if (qSize >= 2){
+					  // 2 queries
+					  if (isInt(query_pairs.get("num1")) && isInt(query_pairs.get("num2"))){
+						  // extract required fields from parameters
+						  num1 = Integer.parseInt(query_pairs.get("num1"));
+						  num2 = Integer.parseInt(query_pairs.get("num2")); 
+						  result = num1 * num2;
+						  // Generate valid response
+						  builder.append("HTTP/1.1 200 OK\n");
+						  builder.append("Content-Type: text/html; charset=utf-8\n");
+						  builder.append("\n");
+						  builder.append("Result is: " + result);
+						  builder.append("\n num of query is: " + qSize);
+					  } else {
+						  // Generate int error response
+						  builder.append("HTTP/1.1 206 OK\n");
+						  builder.append("Content-Type: text/html; charset=utf-8\n");
+						  builder.append("\n");
+						  builder.append("Result is: queries are not an int");
+						  builder.append("\n num of query is: " + qSize);
+					  }
+					// 1 query
+				  } else if (qSize == 1){
+					  if (isInt(query_pairs.get("num1"))){
 					  // extract required fields from parameters
 					  num1 = Integer.parseInt(query_pairs.get("num1"));
-					  num2 = Integer.parseInt(query_pairs.get("num2")); 
-					  result = num1 * num2;
+					  result = num1 * num1;
 					  // Generate response
 					  builder.append("HTTP/1.1 200 OK\n");
 					  builder.append("Content-Type: text/html; charset=utf-8\n");
 					  builder.append("\n");
 					  builder.append("Result is: " + result);
 					  builder.append("\n num of query is: " + qSize);
+					  } else {
+						  // Generate response non int response
+						  builder.append("HTTP/1.1 206 OK\n");
+						  builder.append("Content-Type: text/html; charset=utf-8\n");
+						  builder.append("\n");
+						  builder.append("Result is: query is not an int");
+						  builder.append("\n num of query is: " + qSize);
+					  }
+				  // Handle any other query parameter problems	  
 				  } else {
-					  // Generate int error response
-					  builder.append("HTTP/1.1 206 OK\n");
-					  builder.append("Content-Type: text/html; charset=utf-8\n");
-					  builder.append("\n");
-					  builder.append("Result is: queries are not an int");
-					  builder.append("\n num of query is: " + qSize);
+					builder.append("HTTP/1.1 400 Not Found\n");
+					builder.append("Content-Type: text/html; charset=utf-8\n");
+					builder.append("\n");
+					builder.append("Query parameter invalid ");
 				  }
-				// 1 query
-			  } else if (qSize == 1){
-				  if (isInt(query_pairs.get("num1"))){
-				  // extract required fields from parameters
-				  num1 = Integer.parseInt(query_pairs.get("num1"));
-				  result = num1 * num1;
-				  // Generate response
-				  builder.append("HTTP/1.1 200 OK\n");
+			  } catch (Exception e) {
+				  builder.append("HTTP/1.1 400 Not Found\n");
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
-				  builder.append("\n");
-				  builder.append("Result is: " + result);
-				  builder.append("\n num of query is: " + qSize);
-				  } else {
-					  // Generate response
-					  builder.append("HTTP/1.1 206 OK\n");
-					  builder.append("Content-Type: text/html; charset=utf-8\n");
-					  builder.append("\n");
-					  builder.append("Result is: query is not an int");
-					  builder.append("\n num of query is: " + qSize);
-				  }
-			  } else {
-				builder.append("HTTP/1.1 400 Not Found\n");
-				builder.append("Content-Type: text/html; charset=utf-8\n");
-				builder.append("\n");
-				builder.append("Query parameter invalid ");
+				  builder.append("Not what I'm looking for");
 			  }
-		  } catch (Exception e) {
-			  builder.append("HTTP/1.1 206 NO\n");
-			  builder.append("Content-Type: text/html; charset=utf-8\n");
-			  builder.append("Not what I'm looking for");
-		  }
-
-          // TODO: Include error handling here with a correct error code and
-          // a response that makes sense
 
         } else if (request.contains("github?")) {
           // pulls the query from the request and runs it with GitHub's REST API
