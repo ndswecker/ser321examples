@@ -214,7 +214,7 @@ class WebServer {
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
           builder.append("Result is: " + result);
-		  builder.append("\n num of query is: " + qSize;
+		  builder.append("\n num of query is: " + qSize);
 
           // TODO: Include error handling here with a correct error code and
           // a response that makes sense
