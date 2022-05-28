@@ -210,9 +210,17 @@ class WebServer {
 			  
 			  if (qSize == 2){
 			// extract required fields from parameters
+				try {
 				num1 = Integer.parseInt(query_pairs.get("num1"));
-				num2 = Integer.parseInt(query_pairs.get("num2"));
+				num2 = Integer.parseInt(query_pairs.get("num2")); 
 				result = num1 * num2;
+				} catch (NumberFormatException e){
+					builder.append("HTTP/1/1 206 OK\n");
+					builder.append("Content-Type: text/html; charset=utf-8\n");
+					builder.append("\n");
+					builder.append("query is not a number");
+					builder.append("\n num of query is: " + qSize);
+				}
 			  } else if (qSize == 1){
 				num1 = Integer.parseInt(query_pairs.get("num1"));
 				result = num1 * num1;
@@ -228,7 +236,7 @@ class WebServer {
 			  builder.append("Result is: " + result);
 			  builder.append("\n num of query is: " + qSize);
 		  } catch (Exception e) {
-			  builder.append("HTTP/1.1 200 OK\n");
+			  builder.append("HTTP/1.1 206 NO\n");
 			  builder.append("Content-Type: text/html; charset=utf-8\n");
 			  builder.append("Not what I'm looking for");
 		  }
