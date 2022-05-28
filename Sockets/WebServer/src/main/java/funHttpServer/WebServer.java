@@ -210,7 +210,7 @@ class WebServer {
 			  
 			  if (qSize >= 2){
 				  // 2 queries
-				  if (isInt(query_pairs.get("num1")) && isInt(query_pairs.get("num2")){
+				  if (isInt(query_pairs.get("num1")) && isInt(query_pairs.get("num2"))){
 					  // extract required fields from parameters
 					  num1 = Integer.parseInt(query_pairs.get("num1"));
 					  num2 = Integer.parseInt(query_pairs.get("num2")); 
