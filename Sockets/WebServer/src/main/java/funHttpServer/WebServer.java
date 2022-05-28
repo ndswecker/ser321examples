@@ -210,20 +210,12 @@ class WebServer {
 			  
 			  if (qSize == 2){
 			// extract required fields from parameters
-				try {
 				num1 = Integer.parseInt(query_pairs.get("num1"));
 				num2 = Integer.parseInt(query_pairs.get("num2")); 
 				result = num1 * num2;
-				} catch (NumberFormatException e){
-					builder.append("HTTP/1/1 206 OK\n");
-					builder.append("Content-Type: text/html; charset=utf-8\n");
-					builder.append("\n");
-					builder.append("query is not a number");
-					builder.append("\n num of query is: " + qSize);
-				}
 			  } else if (qSize == 1){
-				num1 = Integer.parseInt(query_pairs.get("num1"));
-				result = num1 * num1;
+				  num1 = Integer.parseInt(query_pairs.get("num1"));
+				  result = num1 * num1;
 			  } else {
 				  num1 = 1;
 				  result = num1 * num1;
@@ -304,6 +296,18 @@ class WebServer {
     // {{"q", "hello world/me"}, {"bob","5"}}
     return query_pairs;
   }
+  
+  public static boolean isInt(String str) {
+	
+  	try {
+      	@SuppressWarnings("unused")
+    	int x = Integer.parseInt(str);
+      	return true; //String is an Integer
+	} catch (NumberFormatException e) {
+    	return false; //String is not an Integer
+	}
+  	
+}
 
   /**
    * Builds an HTML file list from the www directory
