@@ -207,12 +207,12 @@ class WebServer {
 		  
 		  try {
 			  
-			  if (qSize = 2){
+			  if (qSize == 2){
 			// extract required fields from parameters
 				num1 = Integer.parseInt(query_pairs.get("num1"));
 				num2 = Integer.parseInt(query_pairs.get("num2"));
 	 
-			  } else if (qSize = 1){
+			  } else if (qSize == 1){
 				num1 = Integer.parseInt(query_pairs.get("num1"));
 				num2 = Integer.parseInt(query_pairs.get("num1"));
 			  }
