@@ -82,3 +82,8 @@ task runFrac(type: JavaExec) {
   compile 'org.json:json:20171018' // org.json
   compile 'com.google.code.gson:gson:2.8.6' // Google JSON
  }
+ 
+// https://mvnrepository.com/artifact/org.json/json
+implementation group: 'org.json', name: 'json', version: '20220320'
+
+
