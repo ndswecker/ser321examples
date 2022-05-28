@@ -79,5 +79,6 @@ task runFrac(type: JavaExec) {
 
  Setting dependencies, e.g. when you import JSON in your Java files
  dependencies{
-   compile 'org.json:json:20171018'
+  compile 'org.json:json:20171018' // org.json
+  compile 'com.google.code.gson:gson:2.8.6' // Google JSON
  }
