@@ -204,6 +204,7 @@ class WebServer {
 		  
 		  Integer num1;
 		  Integer num2;
+		  Integer result;
 		  
 		  try {
 			  
@@ -211,14 +212,14 @@ class WebServer {
 			// extract required fields from parameters
 				num1 = Integer.parseInt(query_pairs.get("num1"));
 				num2 = Integer.parseInt(query_pairs.get("num2"));
-	 
+				result = num1 * num2;
 			  } else if (qSize == 1){
 				num1 = Integer.parseInt(query_pairs.get("num1"));
-				num2 = Integer.parseInt(query_pairs.get("num1"));
+				result = num1 * num1;
+			  } else {
+				  num1 = 1;
+				  result = num1 * num1;
 			  }
-
-			  // do math
-			  Integer result = num1 * num2;
 
 			  // Generate response
 			  builder.append("HTTP/1.1 200 OK\n");
