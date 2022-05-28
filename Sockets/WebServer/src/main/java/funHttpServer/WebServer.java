@@ -250,10 +250,10 @@ class WebServer {
 					  builder.append("\n num of query is: " + qSize);
 				  }
 			  } else {
-				builder.append("HTTP/1.1 404 Not Found\n");
+				builder.append("HTTP/1.1 400 Not Found\n");
 				builder.append("Content-Type: text/html; charset=utf-8\n");
 				builder.append("\n");
-				builder.append("File not found: " + file);
+				builder.append("Query parameter invalid ");
 			  }
 		  } catch (Exception e) {
 			  builder.append("HTTP/1.1 206 NO\n");
