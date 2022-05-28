@@ -208,25 +208,54 @@ class WebServer {
 		  Integer num2;
 		  Integer result;
 			  
-			  if (qSize == 2){
-			// extract required fields from parameters
-				num1 = Integer.parseInt(query_pairs.get("num1"));
-				num2 = Integer.parseInt(query_pairs.get("num2")); 
-				result = num1 * num2;
+			  if (qSize >= 2){
+				  // 2 queries
+				  if (isInt(query_pairs.get("num1") && isInt(query_pairs.get("num2")){
+					  // extract required fields from parameters
+					  num1 = Integer.parseInt(query_pairs.get("num1"));
+					  num2 = Integer.parseInt(query_pairs.get("num2")); 
+					  result = num1 * num2;
+					  // Generate response
+					  builder.append("HTTP/1.1 200 OK\n");
+					  builder.append("Content-Type: text/html; charset=utf-8\n");
+					  builder.append("\n");
+					  builder.append("Result is: " + result);
+					  builder.append("\n num of query is: " + qSize);
+				  } else {
+					  // Generate int error response
+					  builder.append("HTTP/1.1 206 OK\n");
+					  builder.append("Content-Type: text/html; charset=utf-8\n");
+					  builder.append("\n");
+					  builder.append("Result is: queries are not an int");
+					  builder.append("\n num of query is: " + qSize);
+				  }
+				// 1 query
 			  } else if (qSize == 1){
+				  if (isInt(query_pairs.get("num1")){
+				  // extract required fields from parameters
 				  num1 = Integer.parseInt(query_pairs.get("num1"));
 				  result = num1 * num1;
+				  // Generate response
+				  builder.append("HTTP/1.1 200 OK\n");
+				  builder.append("Content-Type: text/html; charset=utf-8\n");
+				  builder.append("\n");
+				  builder.append("Result is: " + result);
+				  builder.append("\n num of query is: " + qSize);
+				  } else {
+					  // Generate response
+					  builder.append("HTTP/1.1 206 OK\n");
+					  builder.append("Content-Type: text/html; charset=utf-8\n");
+					  builder.append("\n");
+					  builder.append("Result is: query is not an int");
+					  builder.append("\n num of query is: " + qSize);
+				  }
 			  } else {
-				  num1 = 1;
-				  result = num1 * num1;
+				  builder.append("HTTP/1.1 206 OK\n");
+				  builder.append("Content-Type: text/html; charset=utf-8\n");
+				  builder.append("\n");
+				  builder.append("Not enough args");
+				  builder.append("\n num of query is: " + qSize);
 			  }
-
-			  // Generate response
-			  builder.append("HTTP/1.1 200 OK\n");
-			  builder.append("Content-Type: text/html; charset=utf-8\n");
-			  builder.append("\n");
-			  builder.append("Result is: " + result);
-			  builder.append("\n num of query is: " + qSize);
 		  } catch (Exception e) {
 			  builder.append("HTTP/1.1 206 NO\n");
 			  builder.append("Content-Type: text/html; charset=utf-8\n");
