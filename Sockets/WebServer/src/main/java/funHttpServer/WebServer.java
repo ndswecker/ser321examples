@@ -198,6 +198,7 @@ class WebServer {
           // wrong data is given this just crashes
 
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+		  Integer qSize = query_pairs.size();
           // extract path parameters
           query_pairs = splitQuery(request.replace("multiply?", ""));
 
@@ -213,6 +214,7 @@ class WebServer {
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
           builder.append("Result is: " + result);
+		  builder.append("\n num of query is: " + qSize;
 
           // TODO: Include error handling here with a correct error code and
           // a response that makes sense
