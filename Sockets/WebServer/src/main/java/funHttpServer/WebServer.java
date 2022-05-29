@@ -290,24 +290,22 @@ class WebServer {
 			  //full_name
 			  System.out.println(repoArray.getJSONObject(i).getString("full_name"));
 			  builder.append("full_name: " + repoArray.getJSONObject(i).getString("full_name"));
-			  builder.append("\n");
+			  builder.append("<br/>");
 			  nameArray.put(repoArray.getJSONObject(i).getString("name"));
 			  //id
 			  System.out.println(repoArray.getJSONObject(i).getInt("id"));
 			  builder.append("id: " + repoArray.getJSONObject(i).getInt("id") + "\n");
-			  builder.append("\n");
+			  builder.append("<br/>");
 			  idArray.put(repoArray.getJSONObject(i).getInt("id"));
 			  //login
 			  System.out.println(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
 			  builder.append("owner login: " + repoArray.getJSONObject(i).getJSONObject("owner").getString("login") + "\n");
-			  builder.append("\n");
+			  builder.append("<br/>");
 			  ownerArray.put(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
 		  }
 
-		  builder.append("\n");
+		  builder.append("<br/>");
 		  //builder.append(json);
-          // TODO: Parse the JSON returned by your fetch and create an appropriate
-          // response based on what the assignment document asks for
 
         } else {
           // if the request is not recognized at all
