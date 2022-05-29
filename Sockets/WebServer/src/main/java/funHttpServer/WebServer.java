@@ -285,7 +285,7 @@ class WebServer {
 		  }
 		  
 		  JSONArray idArray = new JSONArray();
-		  for (int i = 0; i < repoArray.length; i++){
+		  for (int i = 0; i < repoArray.length(); i++){
 			  System.out.println(repoArray.getJSONObject(i).getString("id"));
 			  nameArray.put(repoArray.getJSONObject(i).getString("id"));
 		  }
