@@ -281,23 +281,27 @@ class WebServer {
 		  JSONArray nameArray = new JSONArray();
 		  JSONArray idArray = new JSONArray();
 		  JSONArray ownerArray = new JSONArray();
+		  
+		  builder.append("HTTP/1.1 200 OK\n");
+          builder.append("Content-Type: text/html; charset=utf-8\n");
+          builder.append("\n");
+          //builder.append("Check the todos mentioned in the Java source file" );
 		  for (int i = 0; i < repoArray.length(); i++){
 			  //full_name
 			  System.out.println(repoArray.getJSONObject(i).getString("full_name"));
+			  builder.append("full_name: " + repoArray.getJSONObject(i).getString("full_name"));
 			  nameArray.put(repoArray.getJSONObject(i).getString("name"));
 			  //id
 			  System.out.println(repoArray.getJSONObject(i).getInt("id"));
+			  builder.append("id: " + repoArray.getJSONObject(i).getInt("id"));
 			  idArray.put(repoArray.getJSONObject(i).getInt("id"));
 			  //login
 			  System.out.println(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
+			  builder.append("owner login: " + repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
 			  ownerArray.put(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
 		  }
 
-          builder.append("HTTP/1.1 200 OK\n");
-          builder.append("Content-Type: text/html; charset=utf-8\n");
-          builder.append("\n");
-          builder.append("Check the todos mentioned in the Java source file" );
-		  builder.append("\n");
+		  builder.appnend("\n");
 		  builder.append(json);
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response based on what the assignment document asks for
