@@ -301,7 +301,7 @@ class WebServer {
 			  ownerArray.put(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
 		  }
 
-		  builder.appnend("\n");
+		  builder.append("\n");
 		  builder.append(json);
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response based on what the assignment document asks for
