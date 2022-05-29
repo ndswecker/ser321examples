@@ -289,20 +289,20 @@ class WebServer {
 		  for (int i = 0; i < repoArray.length(); i++){
 			  //full_name
 			  System.out.println(repoArray.getJSONObject(i).getString("full_name"));
-			  builder.append("full_name: " + repoArray.getJSONObject(i).getString("full_name"));
+			  builder.append("full_name: " + repoArray.getJSONObject(i).getString("full_name") + "\n");
 			  nameArray.put(repoArray.getJSONObject(i).getString("name"));
 			  //id
 			  System.out.println(repoArray.getJSONObject(i).getInt("id"));
-			  builder.append("id: " + repoArray.getJSONObject(i).getInt("id"));
+			  builder.append("id: " + repoArray.getJSONObject(i).getInt("id") + "\n");
 			  idArray.put(repoArray.getJSONObject(i).getInt("id"));
 			  //login
 			  System.out.println(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
-			  builder.append("owner login: " + repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
+			  builder.append("owner login: " + repoArray.getJSONObject(i).getJSONObject("owner").getString("login") + "\n");
 			  ownerArray.put(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
 		  }
 
 		  builder.append("\n");
-		  builder.append(json);
+		  //builder.append(json);
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response based on what the assignment document asks for
 
