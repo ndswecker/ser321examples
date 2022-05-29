@@ -281,7 +281,7 @@ class WebServer {
 		  JSONArray nameArray = new JSONArray();
 		  for (int i = 0; i < repoArray.length(); i++){
 			  System.out.println(repoArray.getJSONObject(i).getString("name"));
-			  nameArray.put(repoArray.getJSONObject(i).getString("name));
+			  nameArray.put(repoArray.getJSONObject(i).getString("name"));
 		  }
 
           builder.append("HTTP/1.1 200 OK\n");
