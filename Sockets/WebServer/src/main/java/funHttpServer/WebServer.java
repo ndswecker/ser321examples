@@ -276,7 +276,8 @@ class WebServer {
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
           query_pairs = splitQuery(request.replace("github?", ""));
           String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
-          //System.out.println("info here: " + json);
+          JSONObject basicRepo = new JSONObject(json);
+		  JSONArray repoArray = basicRepo.getJSONArray("name");
 
           builder.append("HTTP/1.1 200 OK\n");
           builder.append("Content-Type: text/html; charset=utf-8\n");
