@@ -366,8 +366,9 @@ class WebServer {
 				  System.out.println("copper: " + copper);
 				  if (copper == null){
 					  copperInt = 0;
+				  } else{
+					  copperInt = Integer.parseInt(copper);
 				  }
-				  copperInt = Integer.parseInt(copper);
 				  
 				  String silver = query_pairs.get("silver");
 				  silverInt = Integer.parseInt(silver);
