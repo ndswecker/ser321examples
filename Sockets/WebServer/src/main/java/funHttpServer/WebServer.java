@@ -357,7 +357,8 @@ class WebServer {
 				  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
 				  query_pairs = splitQuery(request.replace("DNDcoinage?", ""));
 				  String copper = query_pairs.get("copper");
-				  System.out.println(copper);
+				  Integer copperInt = Integer.parseInt(copper);
+				  System.out.println(copperInt * 5);
 				  
 				  builder.append("HTTP/1.1 200 OK\n");
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
