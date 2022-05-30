@@ -352,7 +352,7 @@ class WebServer {
 				  builder.append("\n");
 				  builder.append("please enter /binary?text");
 			}
-		} else if (request.contains("DNDcoinage?") {
+		} else if (request.contains("DNDcoinage?")) {
 			try {
 				  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
 				  query_pairs = splitQuery(request.replace("DNDcoinage?", ""));
