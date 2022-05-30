@@ -313,6 +313,9 @@ class WebServer {
 			  builder.append("Content-Type: text/html; charset=utf-8\n");
 			  builder.append("\n");
 			  builder.append("Query parameters invalid");
+			  
+			  String queryString = query_pairs.get("query");
+			  builder.append("This was invalid" + queryString);
 		  }
 
 
