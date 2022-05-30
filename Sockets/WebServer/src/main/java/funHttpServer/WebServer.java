@@ -372,7 +372,7 @@ class WebServer {
 				  String gold = query_pairs.get("gold");
 				  Integer goldInt = Integer.parseInt(gold);
 				  
-				  String platinum = query_paris.get("platinum");
+				  String platinum = query_pairs.get("platinum");
 				  Integer platInt = Integer.parseInt(platinum);
 				  
 				  System.out.println(copperInt + silverInt* 10 + electInt*50 + goldInt*100 + platInt*1000);
