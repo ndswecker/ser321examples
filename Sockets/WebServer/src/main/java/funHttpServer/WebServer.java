@@ -352,13 +352,30 @@ class WebServer {
 				  builder.append("\n");
 				  builder.append("please enter /binary?text");
 			}
-		} else if (request.contains("DNDcoinage?")) {
+			
+		  // 3.6.3 Make your own request
+		  // converts dungeons and dragons currency into copper coins
+		}  else if (request.contains("DNDcoinage?")) {
 			try {
 				  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
 				  query_pairs = splitQuery(request.replace("DNDcoinage?", ""));
+				  
 				  String copper = query_pairs.get("copper");
 				  Integer copperInt = Integer.parseInt(copper);
-				  System.out.println(copperInt * 5);
+				  
+				  String silver = query_pairs.get("silver");
+				  Integer silverInt = Integer.parseInt(silver);
+				  
+				  String electrum = query_pairs.get("electrum");
+				  Integer electInt = Integer.parseInt(electrum);
+				  
+				  String gold = query_pairs.get("gold");
+				  Integer goldInt = Integer.parseInt(gold);
+				  
+				  String platinum = query_paris.get("platinum");
+				  Integer platInt = Integer.parseInt(platinum);
+				  
+				  System.out.println(copperInt + silverInt* 10 + electInt*50 + goldInt*100 + platInt*1000);
 				  
 				  builder.append("HTTP/1.1 200 OK\n");
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
