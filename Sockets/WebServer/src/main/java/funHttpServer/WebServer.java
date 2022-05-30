@@ -253,13 +253,13 @@ class WebServer {
 					  }
 				  // Handle any other query parameter problems	  
 				  } else {
-					builder.append("HTTP/1.1 400 Not Found\n");
+					builder.append("HTTP/1.1 406 Not Acceptable \n");
 					builder.append("Content-Type: text/html; charset=utf-8\n");
 					builder.append("\n");
-					builder.append("Query parameter invalid ");
+					builder.append("<br/>Query parameter invalid ");
 				  }
 			  } catch (Exception e) {
-				  builder.append("HTTP/1.1 400 Not Found\n");
+				  builder.append("HTTP/1.1 406 Not Acceptable\n");
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
 				  builder.append("\n");
 				  builder.append("<br/> Your numbers were invalid");
@@ -321,7 +321,24 @@ class WebServer {
 		  }
 
 
-        } else {
+        } else if(request.contains("binary?") {
+			try {
+				  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+				  query_pairs = splitQuery(request.replace("github?", ""));
+				  String input = query_pairs.get("query");
+				  
+				  builder.append("HTTP/1.1 200 OK\n");
+				  builder.append("Content-Type: text/html; charset=utf-8\n");
+				  builder.append("\n");
+				  builder.append(input);
+				
+			} catch (Exception e){
+				  builder.append("HTTP/1.1 400 Bad Request\n");
+				  builder.append("Content-Type: text/html; charset=utf-8\n");
+				  builder.append("\n");
+				  builder.append("wrong string");
+			}
+		} else {
           // if the request is not recognized at all
 
           builder.append("HTTP/1.1 400 Bad Request\n");
