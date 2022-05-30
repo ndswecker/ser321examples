@@ -363,7 +363,6 @@ class WebServer {
 				  Integer copperInt, silverInt, electInt, goldInt, platInt;
 				  
 				  String copper = query_pairs.get("copper");
-				  System.out.println("copper: " + copper);
 				  if (copper == null){
 					  copperInt = 0;
 				  } else{
@@ -371,16 +370,32 @@ class WebServer {
 				  }
 				  
 				  String silver = query_pairs.get("silver");
-				  silverInt = Integer.parseInt(silver);
+				  if (silver == null){
+					  silverInt = 0;
+				  } else {
+					  silverInt = Integer.parseInt(silver);
+				  }
 				  
 				  String electrum = query_pairs.get("electrum");
-				  electInt = Integer.parseInt(electrum);
+				  if (electrum == null){
+					  electInt = 0;
+				  } else {
+					  electInt = Integer.parseInt(electrum);
+				  }
 				  
 				  String gold = query_pairs.get("gold");
-				  goldInt = Integer.parseInt(gold);
+				  if (gold == null){
+					  goldInt = 0;
+				  } else {
+					  goldInt = Integer.parseInt(gold);
+				  }
 				  
 				  String platinum = query_pairs.get("platinum");
-				  platInt = Integer.parseInt(platinum);
+				  if (platinum == null) {
+					  platInt = 0;
+				  } else {
+					  platInt = Integer.parseInt(platinum);
+				  }
 				  
 				  Integer total = copperInt + silverInt* 10 + electInt*50 + goldInt*100 + platInt*1000;
 				  
