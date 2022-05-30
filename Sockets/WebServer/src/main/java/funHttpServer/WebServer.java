@@ -375,12 +375,12 @@ class WebServer {
 				  String platinum = query_pairs.get("platinum");
 				  Integer platInt = Integer.parseInt(platinum);
 				  
-				  System.out.println(copperInt + silverInt* 10 + electInt*50 + goldInt*100 + platInt*1000);
+				  Integer total = copperInt + silverInt* 10 + electInt*50 + goldInt*100 + platInt*1000;
 				  
 				  builder.append("HTTP/1.1 200 OK\n");
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
 				  builder.append("\n");
-				  builder.append(copper);
+				  builder.append("Amount in copper : " + total);
 				  
 			} catch (Exception e) {
 				  builder.append("HTTP/1.1 400 Bad Request\n");
