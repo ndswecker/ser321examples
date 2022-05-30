@@ -360,20 +360,25 @@ class WebServer {
 				  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
 				  query_pairs = splitQuery(request.replace("DNDcoinage?", ""));
 				  
+				  Integer copperInt, silverInt, electInt, goldInt, platInt;
+				  
 				  String copper = query_pairs.get("copper");
-				  Integer copperInt = Integer.parseInt(copper);
+				  if (copper = null){
+					  copperInt = 0;
+				  }
+				  copperInt = Integer.parseInt(copper);
 				  
 				  String silver = query_pairs.get("silver");
-				  Integer silverInt = Integer.parseInt(silver);
+				  silverInt = Integer.parseInt(silver);
 				  
 				  String electrum = query_pairs.get("electrum");
-				  Integer electInt = Integer.parseInt(electrum);
+				  electInt = Integer.parseInt(electrum);
 				  
 				  String gold = query_pairs.get("gold");
-				  Integer goldInt = Integer.parseInt(gold);
+				  goldInt = Integer.parseInt(gold);
 				  
 				  String platinum = query_pairs.get("platinum");
-				  Integer platInt = Integer.parseInt(platinum);
+				  platInt = Integer.parseInt(platinum);
 				  
 				  Integer total = copperInt + silverInt* 10 + electInt*50 + goldInt*100 + platInt*1000;
 				  
@@ -387,8 +392,14 @@ class WebServer {
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
 				  builder.append("\n");
 				  builder.append("Not a valid coinage input");
+			} catch (NumberFormatException e){
+				  builder.append("HTTP/1.1 400 Bad Request\n");
+				  builder.append("Content-Type: text/html; charset=utf-8\n");
+				  builder.append("\n");
+				  builder.append("Must use integers as argument");
 			}
 		} else {
+			
           // if the request is not recognized at all
 
           builder.append("HTTP/1.1 400 Bad Request\n");
