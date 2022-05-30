@@ -328,10 +328,21 @@ class WebServer {
 				  String input = query_pairs.get("input");
 				  System.out.println(input);
 				  
+				  byte[] bytes = input.getBytes();
+				  StringBuilder binary = new StringBuilder();
+				  for (byte b : bytes){
+					  int val = b;
+					  for (i = 0; i < 8; i++){
+						  binary.append((val & 128) == 0? 0 : 1);
+						  val <<= 1;
+					  }
+					  binary.append(' ');
+				  }
+				  
 				  builder.append("HTTP/1.1 200 OK\n");
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
 				  builder.append("\n");
-				  builder.append(input);
+				  builder.append(binary);
 				
 			} catch (Exception e){
 				  builder.append("HTTP/1.1 400 Bad Request\n");
