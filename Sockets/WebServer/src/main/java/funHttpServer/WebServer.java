@@ -300,7 +300,7 @@ class WebServer {
 			  //login
 			  System.out.println(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
 			  builder.append("owner login: " + repoArray.getJSONObject(i).getJSONObject("owner").getString("login") + "\n");
-			  builder.append("<br/>");
+			  builder.append("<br/><br/>");
 			  ownerArray.put(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
 		  }
 
