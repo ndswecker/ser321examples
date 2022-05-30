@@ -324,7 +324,7 @@ class WebServer {
         } else if(request.contains("binary?")) {
 			try {
 				  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
-				  query_pairs = splitQuery(request.replace("github?", ""));
+				  query_pairs = splitQuery(request.replace("binary?", ""));
 				  String input = query_pairs.get("input");
 				  System.out.println(input);
 				  
