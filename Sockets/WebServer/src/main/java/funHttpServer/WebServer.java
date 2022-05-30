@@ -320,7 +320,9 @@ class WebServer {
 			  builder.append("<b/> Valid model: hithub?query=user/username/repo");
 		  }
 
-
+		  // 3.6.3 Make your own request
+		  // converts a string to binary
+		  // from https://stackoverflow.com/questions/917163/convert-a-string-like-testing123-to-binary-in-java
         } else if(request.contains("binary?")) {
 			try {
 				  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
@@ -348,7 +350,7 @@ class WebServer {
 				  builder.append("HTTP/1.1 400 Bad Request\n");
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
 				  builder.append("\n");
-				  builder.append("wrong string");
+				  builder.append("please enter /binary?text");
 			}
 		} else {
           // if the request is not recognized at all
