@@ -275,37 +275,45 @@ class WebServer {
 
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
           query_pairs = splitQuery(request.replace("github?", ""));
-          String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
-          JSONArray repoArray = new JSONArray(json);
 		  
-		  JSONArray nameArray = new JSONArray();
-		  JSONArray idArray = new JSONArray();
-		  JSONArray ownerArray = new JSONArray();
-		  
-		  builder.append("HTTP/1.1 200 OK\n");
-          builder.append("Content-Type: text/html; charset=utf-8\n");
-          builder.append("\n");
-          //builder.append("Check the todos mentioned in the Java source file" );
-		  for (int i = 0; i < repoArray.length(); i++){
-			  //full_name
-			  System.out.println(repoArray.getJSONObject(i).getString("full_name"));
-			  builder.append("full_name: " + repoArray.getJSONObject(i).getString("full_name"));
+		  try {
+			  String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
+			  JSONArray repoArray = new JSONArray(json);
+			  
+			  JSONArray nameArray = new JSONArray();
+			  JSONArray idArray = new JSONArray();
+			  JSONArray ownerArray = new JSONArray();
+			  
+			  builder.append("HTTP/1.1 200 OK\n");
+			  builder.append("Content-Type: text/html; charset=utf-8\n");
+			  builder.append("\n");
+
+			  for (int i = 0; i < repoArray.length(); i++){
+				  //full_name
+				  System.out.println(repoArray.getJSONObject(i).getString("full_name"));
+				  builder.append("full_name: " + repoArray.getJSONObject(i).getString("full_name"));
+				  builder.append("<br/>");
+				  nameArray.put(repoArray.getJSONObject(i).getString("name"));
+				  //id
+				  System.out.println(repoArray.getJSONObject(i).getInt("id"));
+				  builder.append("id: " + repoArray.getJSONObject(i).getInt("id") + "\n");
+				  builder.append("<br/>");
+				  idArray.put(repoArray.getJSONObject(i).getInt("id"));
+				  //login
+				  System.out.println(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
+				  builder.append("owner login: " + repoArray.getJSONObject(i).getJSONObject("owner").getString("login") + "\n");
+				  builder.append("<br/><br/>");
+				  ownerArray.put(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
+			  }
+
 			  builder.append("<br/>");
-			  nameArray.put(repoArray.getJSONObject(i).getString("name"));
-			  //id
-			  System.out.println(repoArray.getJSONObject(i).getInt("id"));
-			  builder.append("id: " + repoArray.getJSONObject(i).getInt("id") + "\n");
-			  builder.append("<br/>");
-			  idArray.put(repoArray.getJSONObject(i).getInt("id"));
-			  //login
-			  System.out.println(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
-			  builder.append("owner login: " + repoArray.getJSONObject(i).getJSONObject("owner").getString("login") + "\n");
-			  builder.append("<br/><br/>");
-			  ownerArray.put(repoArray.getJSONObject(i).getJSONObject("owner").getString("login"));
+		  //builder.append(json);
+		  } catch (Exception e){
+			  builder.append("HTTP/1.1 400 Not Found\n");
+			  builder.append("Content-Type: text/html; charset=utf-8\n");
+			  builder.append("Query parameters invalid");
 		  }
 
-		  builder.append("<br/>");
-		  //builder.append(json);
 
         } else {
           // if the request is not recognized at all
