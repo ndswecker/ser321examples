@@ -352,6 +352,24 @@ class WebServer {
 				  builder.append("\n");
 				  builder.append("please enter /binary?text");
 			}
+		} else if (request.contains("DNDcoinage?") {
+			try {
+				  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+				  query_pairs = splitQuery(request.replace("DNDcoinage?", ""));
+				  String copper = query_pairs.get("copper");
+				  System.out.println(copper);
+				  
+				  builder.append("HTTP/1.1 200 OK\n");
+				  builder.append("Content-Type: text/html; charset=utf-8\n");
+				  builder.append("\n");
+				  builder.append(copper);
+				  
+			} catch (Exception e) {
+				  builder.append("HTTP/1.1 400 Bad Request\n");
+				  builder.append("Content-Type: text/html; charset=utf-8\n");
+				  builder.append("\n");
+				  builder.append("Not a valid coinage input");
+			}
 		} else {
           // if the request is not recognized at all
 
