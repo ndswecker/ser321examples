@@ -261,7 +261,8 @@ class WebServer {
 			  } catch (Exception e) {
 				  builder.append("HTTP/1.1 400 Not Found\n");
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
-				  builder.append("Not what I'm looking for");
+				  builder.append("\n");
+				  builder.append("<br/> Your numbers were invalid");
 			  }
 
         } else if (request.contains("github?")) {
@@ -315,7 +316,8 @@ class WebServer {
 			  builder.append("Query parameters invalid");
 			  
 			  String queryString = query_pairs.get("query");
-			  builder.append("This was invalid" + queryString);
+			  builder.append("<b/> This was invalid: " + queryString);
+			  builder.append("<b/> Valid model: hithub?query=user/username/repo");
 		  }
 
 
