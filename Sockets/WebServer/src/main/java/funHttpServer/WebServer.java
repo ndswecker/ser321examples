@@ -363,6 +363,7 @@ class WebServer {
 				  Integer copperInt, silverInt, electInt, goldInt, platInt;
 				  
 				  String copper = query_pairs.get("copper");
+				  System.out.println("copper: " + copper);
 				  if (copper == null){
 					  copperInt = 0;
 				  }
