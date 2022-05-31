@@ -340,7 +340,6 @@ class WebServer {
 						  binary.append((val & 128) == 0? 0 : 1);
 						  val <<= 1;
 					  }
-					  b = b >> shifter;
 					  binary.append(' ');
 				  }
 				  
