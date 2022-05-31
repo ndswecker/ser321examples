@@ -328,6 +328,8 @@ class WebServer {
 				  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
 				  query_pairs = splitQuery(request.replace("binary?", ""));
 				  String input = query_pairs.get("input");
+				  String shift = query_pairs.get("shift");
+				  Integer shifter = Integer.parseInt(shift);
 				  System.out.println(input);
 				  
 				  byte[] bytes = input.getBytes();
@@ -337,6 +339,7 @@ class WebServer {
 					  for (int i = 0; i < 8; i++){
 						  binary.append((val & 128) == 0? 0 : 1);
 						  val <<= 1;
+						  val >> shifter;
 					  }
 					  binary.append(' ');
 				  }

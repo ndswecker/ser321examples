@@ -15,3 +15,8 @@ gradle FunWebServer
 
 
 The FunWebServer does a little more than the SimpleWebServer. Check out what it does :-)
+
+#### nswecker contributions
+
+FunWebServer multiply updated
+binary function now takes a query input=TEXT and outputs it as binary
