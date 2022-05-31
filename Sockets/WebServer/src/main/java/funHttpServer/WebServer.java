@@ -321,7 +321,7 @@ class WebServer {
 		  }
 
 		  // 3.6.3 Make your own request
-		  // converts a string to binary
+		  // converts a string to binary and shifts it by a certain amount 
 		  // from https://stackoverflow.com/questions/917163/convert-a-string-like-testing123-to-binary-in-java
         } else if(request.contains("binary?")) {
 			try {
@@ -339,7 +339,7 @@ class WebServer {
 					  for (int i = 0; i < 8; i++){
 						  binary.append((val & 128) == 0? 0 : 1);
 						  val <<= 1;
-						  val >> shifter;
+						  val = val >> shifter;
 					  }
 					  binary.append(' ');
 				  }
