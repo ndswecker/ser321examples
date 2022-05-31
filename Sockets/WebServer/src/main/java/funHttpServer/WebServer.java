@@ -350,7 +350,7 @@ class WebServer {
 				  builder.append("HTTP/1.1 400 Bad Request\n");
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
 				  builder.append("\n");
-				  builder.append("please enter /binary?text");
+				  builder.append("please enter /binary?input=TEXT");
 			}
 			
 		  // 3.6.3 Make your own request
@@ -414,6 +414,7 @@ class WebServer {
 				  builder.append("Content-Type: text/html; charset=utf-8\n");
 				  builder.append("\n");
 				  builder.append("Not a valid coinage input");
+				  builder.append("<br>Example: http://54.245.143.63:9000/DNDcoinage?copper=5&gold=60 ");
 			} 
 		} else {
 			
