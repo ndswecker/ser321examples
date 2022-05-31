@@ -328,8 +328,6 @@ class WebServer {
 				  Map<String, String> query_pairs = new LinkedHashMap<String, String>();
 				  query_pairs = splitQuery(request.replace("binary?", ""));
 				  String input = query_pairs.get("input");
-				  String shift = query_pairs.get("shift");
-				  Integer shifter = Integer.parseInt(shift);
 				  System.out.println(input);
 				  
 				  byte[] bytes = input.getBytes();
